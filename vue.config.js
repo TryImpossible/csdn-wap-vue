@@ -45,6 +45,26 @@ module.exports = {
   // 查阅 https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
   // chainWebpack: () => {},
   // configureWebpack: () => {},
+  css: {
+    loaderOptions: {
+      // css: {
+      //   // 这里的选项会传递给 css-loader
+      // },
+      postcss: {
+        // 这里的选项会传递给 postcss-loader
+        plugins: [
+          require('autoprefixer')({
+            browsers: ['Android >= 4.0', 'iOS >= 8']
+          }),
+          require('postcss-pxtorem')({
+            rootValue: 7.5, // 换算的基数
+            selectorBlackList: ['weui', 'mu'], // 忽略转换正则匹配项
+            propList: ['*']
+          })
+        ]
+      }
+    }
+  },
   devServer: {
     port: 8080, // 端口号
     // host: 'localhost',
