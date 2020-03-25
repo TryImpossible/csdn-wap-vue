@@ -52,13 +52,11 @@ module.exports = {
       // },
       postcss: {
         // 这里的选项会传递给 postcss-loader
+        importLoaders: 1,
         plugins: [
-          require('autoprefixer')({
-            browsers: ['Android >= 4.0', 'iOS >= 8']
-          }),
           require('postcss-pxtorem')({
-            rootValue: 7.5, // 换算的基数
-            selectorBlackList: ['weui', 'mu'], // 忽略转换正则匹配项
+            rootValue: 50, // 换算的基数
+            selectorBlackList: [], // 忽略转换正则匹配项
             propList: ['*']
           })
         ]
