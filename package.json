@@ -36,6 +36,7 @@
     "postcss-pxtorem": "^5.1.1",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
+    "vconsole": "^3.3.4",
     "vue-template-compiler": "^2.6.11"
   },
   "gitHooks": {

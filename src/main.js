@@ -1,4 +1,5 @@
 import './utilities/rem.js';
+import './utilities/vconsole.js';
 
 import Vue from 'vue';
 import App from './App.vue';
