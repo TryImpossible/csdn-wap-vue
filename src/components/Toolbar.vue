@@ -18,7 +18,7 @@ export default {
   name: 'Toolbar',
   data() {
     return {
-      imgBaseUrl: this.GLOBAL.imgBaseUrl,
+      imgBaseUrl: process.env.VUE_APP_IMAGE_BASE_URL,
       value: ''
     };
   },

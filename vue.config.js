@@ -55,7 +55,7 @@ module.exports = {
         importLoaders: 1,
         plugins: [
           require('postcss-pxtorem')({
-            rootValue: 50, // 换算的基数
+            rootValue: 37.5, // 换算的基数
             selectorBlackList: [], // 忽略转换正则匹配项
             propList: ['*']
           })
@@ -67,19 +67,19 @@ module.exports = {
     port: 8080, // 端口号
     // host: 'localhost',
     https: false, // https:{type:Boolean}
-    open: false //配置自动启动浏览器
+    open: false, //配置自动启动浏览器
     // 查阅：https://github.com/chimurai/http-proxy-middleware#proxycontext-config
     // proxy: 'http://localhost:4000' // 配置跨域处理,只有一个代理
-    // proxy: {
-    //   '/api': {
-    //     target: '<url>',
-    //     ws: true,
-    //     changeOrigin: true
-    //   },
-    //   '/foo': {
-    //     target: '<other_url>'
-    //   }
-    // } // 配置多个代理
+    proxy: {
+      '/api': {
+        target: 'https://www.csdn.net',
+        ws: true,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    } // 配置多个代理
   },
   // 是否为 Babel 或 TypeScript 使用 thread-loader
   parallel: require('os').cpus().length > 1

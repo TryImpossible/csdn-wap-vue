@@ -5,9 +5,11 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import Global from './constants/Global';
+import HttpClient from './network/HttpClient';
 
 Vue.config.productionTip = false;
-Vue.prototype.GLOBAL = Global;
+Vue.prototype.$global = Global;
+Vue.prototype.$http = HttpClient;
 
 new Vue({
   router,
