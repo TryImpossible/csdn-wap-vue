@@ -50,6 +50,9 @@ export default {
   },
   methods: {
     onPress(index) {
+      // 防止重复点击
+      if (this.position !== this.selectedPostion && this.selectedPostion === index) return;
+
       this.selectedPostion = index;
       this.$nextTick(() => {
         // 关于元素位置，详情https://www.cnblogs.com/nbwsj/p/12124882.html
@@ -65,15 +68,15 @@ export default {
 
         const startX = offsetMiddle;
         const endX = lastOffsetLeft + lastOffsetWidth - offsetMiddle;
-        let dx = 0;
         if (offsetLeft < 0) {
-          dx = 0;
+          this.$refs.scrollView.scrollToTop();
         } else if (offsetLeft >= startX && offsetLeft <= endX) {
-          dx = offsetMiddle - offsetLeft;
+          const dx = offsetMiddle - offsetLeft;
+          this.$refs.scrollView.scrollTo(dx, 0, 500);
         } else if (offsetLeft > endX) {
-          dx = document.body.clientWidth - this.$refs.items.getBoundingClientRect().width;
+          this.$refs.scrollView.scrollToEnd();
         }
-        this.$refs.scrollView.scrollTo(dx, 0, 500);
+
         this.$refs.indicator.update(offsetLeft, offsetWidth);
         this.$emit('onSelected', index);
       });

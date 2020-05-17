@@ -96,6 +96,21 @@ export default {
     scrollToElement() {
       // 代理better-scroll的scrollToElement方法
       this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments);
+    },
+    scrollToTop() {
+      this.scrollTo(0, 0);
+    },
+    scrollToEnd() {
+      this.scrollTo(this.scroll.maxScrollX);
+    }
+  },
+  watch: {
+    // 监听数据的变化，延时refreshDelay时间后调用refresh方法重新计算，保证滚动效果正常
+    data() {
+      console.error('123');
+      setTimeout(() => {
+        this.refresh();
+      }, 0);
     }
   }
 };
